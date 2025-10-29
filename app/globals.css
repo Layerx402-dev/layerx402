@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Color palette - Dark Theme with Darker Neon Green */
+  --neon-green: #a8ee37;
+  --neon-green-bright: #c0ff5c;
+  --neon-green-dim: #8fd61f;
+  --neon-green-dark: #76b918;
+  --dark-bg: #0A0E12;
+  --dark-bg-secondary: #111418;
+  --dark-bg-tertiary: #1A1F26;
+  --dark-border: #1F2937;
+  --dark-text: #E5E7EB;
+  --dark-text-muted: #9CA3AF;
+
+  /* Dark mode - Primary theme */
+  --background: var(--dark-bg);
+  --foreground: var(--dark-text);
+  --card: var(--dark-bg-secondary);
+  --card-foreground: var(--dark-text);
+  --popover: var(--dark-bg-secondary);
+  --popover-foreground: var(--dark-text);
+
+  /* Primary - Neon Green */
+  --primary: var(--neon-green);
+  --primary-foreground: var(--dark-bg);
+
+  /* Secondary - Dark with green tint */
+  --secondary: var(--dark-bg-tertiary);
+  --secondary-foreground: var(--neon-green);
+
+  /* Muted - Dark grays */
+  --muted: var(--dark-bg-tertiary);
+  --muted-foreground: var(--dark-text-muted);
+
+  /* Accent - Bright neon green */
+  --accent: var(--neon-green-bright);
+  --accent-foreground: var(--dark-bg);
+
+  /* Destructive - Red */
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* Borders and inputs */
+  --border: var(--dark-border);
+  --input: var(--dark-border);
+  --ring: var(--neon-green);
+
+  /* Charts - Using neon green variations */
+  --chart-1: var(--neon-green);
+  --chart-2: var(--neon-green-bright);
+  --chart-3: var(--neon-green-dim);
+  --chart-4: #22C55E;
+  --chart-5: #10B981;
+
+  --radius: 0rem;
+
+  /* Sidebar */
+  --sidebar: var(--dark-bg-secondary);
+  --sidebar-foreground: var(--dark-text);
+  --sidebar-primary: var(--neon-green);
+  --sidebar-primary-foreground: var(--dark-bg);
+  --sidebar-accent: var(--dark-bg-tertiary);
+  --sidebar-accent-foreground: var(--neon-green);
+  --sidebar-border: var(--dark-border);
+  --sidebar-ring: var(--neon-green);
+
+  /* Navy blue shades - for backwards compatibility */
+  --navy-primary: var(--neon-green);
+  --navy-light: var(--neon-green-bright);
+  --navy-lighter: var(--neon-green-dim);
+  --navy-pale: var(--dark-bg-tertiary);
+  --navy-very-pale: var(--dark-bg-secondary);
+
+  scroll-behavior: smooth;
+}
+
+.dark {
+  /* Already dark by default */
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Fade up animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-up.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Slide in from left */
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .slide-in-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Slide in from right */
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .slide-in-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale in animation */
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scale-in.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Stagger animation for children */
+  .stagger-in > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .stagger-in.animate-in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Neon green glow effects - Dark theme */
+  .neon-glow {
+    box-shadow:
+      0 0 10px color-mix(in srgb, var(--neon-green) 50%, transparent),
+      0 0 20px color-mix(in srgb, var(--neon-green) 30%, transparent),
+      0 0 30px color-mix(in srgb, var(--neon-green) 20%, transparent);
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 10px color-mix(in srgb, var(--neon-green) 70%, transparent),
+      0 0 20px color-mix(in srgb, var(--neon-green) 50%, transparent),
+      0 0 30px color-mix(in srgb, var(--neon-green) 30%, transparent);
+  }
+
+  .neon-border {
+    border: 1px solid var(--neon-green);
+    box-shadow:
+      inset 0 0 10px color-mix(in srgb, var(--neon-green) 20%, transparent),
+      0 0 15px color-mix(in srgb, var(--neon-green) 40%, transparent),
+      0 0 30px color-mix(in srgb, var(--neon-green) 20%, transparent);
+  }
+
+  .light-overlay {
+    background: linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--dark-bg-secondary) 85%, transparent),
+      color-mix(in srgb, var(--dark-bg) 85%, transparent)
+    );
+  }
+
+  /* Real-time trade animation */
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .left-half-200 {
+    left: calc(50% - 200px);
+  }
+
+  .left-half-175 {
+    left: calc(50% - 175px);
+  }
+}
