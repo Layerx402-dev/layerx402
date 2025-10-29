@@ -235,7 +235,7 @@ export default function StatusPage() {
                     <div
                       key={index}
                       className={`flex-1 bg-green-500`}
-                      title={status}
+                      title="Operational"
                     />
                   ))}
                 </div>
