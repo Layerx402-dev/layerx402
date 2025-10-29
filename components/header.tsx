@@ -30,8 +30,8 @@ export function Header() {
           <a href="https://docs.layerx402.dev" className="text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary">
             Docs
           </a>
-          <a href="https://pump.fun/coin/J9qAtjr1FH3YEQASrbXnENWnxBfHoMU6xgj5HDBpump" className="text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary">
-            $LAYERX402
+          <a href="https://github.com/Layerx402-dev/layerx402" className="text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary">
+            Github
           </a>
         </div>
 
