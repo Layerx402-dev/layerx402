@@ -4,7 +4,9 @@ This directory contains Solana smart contracts (programs) for the Layerx402 x402
 
 ## 📋 Contracts Overview
 
-### 1. Payment Escrow (`payment_escrow.rs`)
+### Core Payment Contracts
+
+#### 1. Payment Escrow (`payment_escrow.rs`)
 
 Handles escrow functionality for x402 payments, holding SOL until payment verification is complete.
 
@@ -22,7 +24,7 @@ Handles escrow functionality for x402 payments, holding SOL until payment verifi
 - `refund_escrow` - Refund to payer if expired/cancelled
 - `close_escrow` - Close account and reclaim rent
 
-### 2. Payment Verification (`payment_verification.rs`)
+#### 2. Payment Verification (`payment_verification.rs`)
 
 On-chain verification system for x402 payment proofs with dispute resolution.
 
@@ -41,7 +43,7 @@ On-chain verification system for x402 payment proofs with dispute resolution.
 - `resolve_dispute` - Resolve disputes (authority only)
 - `get_payment_status` - Query payment details
 
-### 3. Payment Settlement (`payment_settlement.rs`)
+#### 3. Payment Settlement (`payment_settlement.rs`)
 
 Manages payment settlements with configurable fees and batch processing.
 
@@ -61,6 +63,115 @@ Manages payment settlements with configurable fees and batch processing.
 - `withdraw_fees` - Withdraw collected fees
 - `update_fee_percentage` - Update platform fees
 - `get_pool_stats` - Get pool statistics
+
+### Advanced Payment Contracts
+
+#### 4. Payment Streaming (`payment_streaming.rs`)
+
+Real-time payment streaming with vesting schedules and cliff periods.
+
+**Features:**
+- Continuous payment streaming over time
+- Configurable vesting schedules
+- Optional cliff periods
+- Pause/resume functionality
+- Cancel with automatic settlement
+
+**Instructions:**
+- `create_stream` - Create a new payment stream
+- `fund_stream` - Fund the stream with SOL
+- `withdraw_stream` - Withdraw vested funds
+- `pause_stream` - Pause streaming (sender only)
+- `resume_stream` - Resume paused stream
+- `cancel_stream` - Cancel and settle remaining funds
+- `get_stream_info` - Query stream details
+
+#### 5. Payment Subscription (`payment_subscription.rs`)
+
+Recurring subscription payments with multiple tiers and auto-renewal.
+
+**Features:**
+- Create subscription plans
+- Auto-renewal support
+- Failed payment handling (3-strike suspension)
+- Subscription lifecycle management
+- Revenue tracking and analytics
+
+**Instructions:**
+- `create_plan` - Create subscription plan
+- `subscribe` - Subscribe to a plan
+- `process_payment` - Process recurring payment
+- `mark_failed_payment` - Record payment failure
+- `cancel_subscription` - Cancel subscription
+- `reactivate_subscription` - Reactivate suspended subscription
+- `update_auto_renew` - Toggle auto-renewal
+- `update_plan_price` - Update plan pricing
+- `deactivate_plan` - Deactivate plan
+
+#### 6. Payment Dispute Resolution (`payment_dispute.rs`)
+
+Decentralized arbitration system for payment disputes.
+
+**Features:**
+- Multi-arbitrator voting system
+- Evidence submission and tracking
+- Majority-rule dispute resolution
+- Appeal system with time windows
+- Automatic fund distribution
+
+**Instructions:**
+- `initialize_resolver` - Setup arbitration system
+- `create_dispute` - File a new dispute
+- `submit_evidence` - Submit additional evidence
+- `assign_arbitrators` - Assign arbitrators to case
+- `cast_vote` - Arbitrator voting
+- `finalize_dispute` - Execute resolution and transfer funds
+- `appeal_dispute` - Appeal a decision
+- `get_dispute_info` - Query dispute details
+
+#### 7. Payment Rewards (`payment_rewards.rs`)
+
+Loyalty rewards program with tiered benefits and point redemption.
+
+**Features:**
+- Points-based rewards system
+- 4-tier membership (Bronze, Silver, Gold, Platinum)
+- Automatic tier upgrades
+- Point redemption for SOL
+- Bonus point allocation
+- Point transfers between members
+
+**Instructions:**
+- `initialize_program` - Setup rewards program
+- `create_member` - Register new member
+- `award_points` - Award points for payments
+- `redeem_points` - Redeem points for SOL
+- `award_bonus` - Award bonus points
+- `transfer_points` - Transfer between members
+- `set_tier` - Manually set member tier
+- `update_rates` - Update program rates
+
+#### 8. Payment Multisig (`payment_multisig.rs`)
+
+Multi-signature wallet for secure payment authorization.
+
+**Features:**
+- N-of-M signature requirement
+- Transaction proposal and approval system
+- Owner management (add/remove)
+- Dynamic threshold adjustment
+- Transaction cancellation
+
+**Instructions:**
+- `create_multisig` - Create multisig wallet
+- `create_transaction` - Propose new transaction
+- `approve_transaction` - Approve transaction
+- `reject_transaction` - Reject transaction
+- `execute_transaction` - Execute approved transaction
+- `cancel_transaction` - Cancel pending transaction
+- `add_owner` - Add new owner
+- `remove_owner` - Remove owner
+- `change_threshold` - Update signature threshold
 
 ## 🚀 Prerequisites
 
